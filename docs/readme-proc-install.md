@@ -1,13 +1,18 @@
 # Installation of the Nudger Frontend Environment (Improved Version)
 
-## 1. Install Dependencies (macOS M1)
+## 1. Install Dependencies 
+### macOS M1
 
 ```bash
 brew install --cask temurin@8
 brew install git gh node pnpm
 softwareupdate --install-rosetta --agree-to-license
+brew install sops
 ```
+### Linux
+```bash
 
+```
 ---
 
 ## 2. Prepare the Working Directory
@@ -55,10 +60,16 @@ mkdir -p ~/.config/sops/age/
 # Generate a personal AGE key (private key stored locally)
 # and extract the public key that must be added to the project SOPS config
 age-keygen -o ~/.config/sops/age/keys.txt
-
-# ⚠️ IMPORTANT: Add your generated AGE **public key** to the repository's .sops.yaml file
-# under the `creation_rules.age` section so SOPS can encrypt secrets for you.
-
+```
+ ⚠️ IMPORTANT: Add your generated AGE **public key** to the repository's .sops.yaml file
+under the `creation_rules.age` section so SOPS can encrypt secrets for you.
+```bash
+creation_rules:
+  - path_regex: .*\.yaml$
+    age:
+      - age1v6vsakf7xumwu687pt6xy2lke3fsgat8c3kv084c0sp9ne5ukefqsaxam5
+```
+```bash
 # Decrypt the shared SOPS file (env.sops.yaml → env.yaml)
 ./sops.sh decrypt env.sops.yaml
 
