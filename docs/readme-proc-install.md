@@ -11,8 +11,29 @@ brew install sops
 ```
 ### Linux
 ```bash
-
+sudo apt update
+sudo apt install -y git temurin-8-jdk gh nodejs sops
+npm install -g pnpm
 ```
+### Windows
+### Temurin 8 (OpenJDK)
+### download from : https://adoptium.net/temurin/releases/?version=8
+
+### Git
+### download from  : https://git-scm.com/download/win
+
+### GitHub CLI
+### download from  : https://cli.github.com/
+
+### Node.js
+### Tdownload from : https://nodejs.org/
+
+### pnpm
+```bash
+npm install -g pnpm
+```
+### sops
+### download from : https://github.com/mozilla/sops/releases (into "assets" section)
 ---
 
 ## 2. Prepare the Working Directory
